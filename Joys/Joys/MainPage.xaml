@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Joys.MainPage">
+
+    <Grid>
+        <!-- WebView để hiển thị bản đồ -->
+        <WebView x:Name="MapWebView"
+                 HeightRequest="400" />
+
+        <StackLayout VerticalOptions="End"
+                     Padding="10">
+            <!-- Nút để gửi vị trí -->
+            <Button Text="Gửi Vị Trí"
+                    Clicked="OnSendLocationClicked"
+                    BackgroundColor="#E6E6FA" />
+
+            <!-- Nút kết nối WebSocket -->
+            <Button Text="Kết Nối"
+                    Clicked="OnConnectClicked"
+                    BackgroundColor="#E6E6FA" />
+
+            <!-- Nút Ngắt Kết Nối -->
+            <Button Text="Ngắt Kết Nối"
+                    Clicked="OnDisconnectClicked"
+                    BackgroundColor="#E6E6FA" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
