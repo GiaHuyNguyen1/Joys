@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net.WebSockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Joys.Services
@@ -16,5 +17,7 @@ namespace Joys.Services
 
         // Hiển thị thông báo lên màn hình hoặc log
         void WriteToScreen(string message);
+
+        Task SendMessageAsync(string message);
     }
 }

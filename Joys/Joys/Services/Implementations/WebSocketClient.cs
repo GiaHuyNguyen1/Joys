@@ -64,8 +64,8 @@ namespace Joys.Services
                 {
                     var slaveInfo = new SlaveInfo
                     {
-                        ID = "Slave1", // Thay đổi ID này cho mỗi thiết bị slave
-                        Name = "Slave Device 1", // Tên thiết bị
+                        ID = "Slave2", // Thay đổi ID này cho mỗi thiết bị slave
+                        Name = "Slave Device 2", // Tên thiết bị
                         Latitude = location.Latitude,
                         Longitude = location.Longitude
                     };
@@ -117,6 +117,15 @@ namespace Joys.Services
             catch (WebSocketException ex)
             {
                 WriteToScreen($"ERROR: Connection closed unexpectedly. {ex.Message}");
+            }
+        }
+
+        public async Task SendMessageAsync(string message)
+        {
+            if (_webSocket != null && _webSocket.State == WebSocketState.Open)
+            {
+                var buffer = Encoding.UTF8.GetBytes(message);
+                await _webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
             }
         }
     }
