@@ -19,7 +19,7 @@ namespace Joys
         private readonly IWebSocketClient _webSocketClient;
         private readonly ILocationService _locationService;
 
-        private const string WebSocketUrl = "ws://192.168.0.127:49152/Echo";
+        private const string WebSocketUrl = "ws://192.168.68.157:49152/Echo";
 
         public MainPage()
         {

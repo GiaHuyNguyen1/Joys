@@ -64,8 +64,8 @@ namespace Joys.Services
                 {
                     var slaveInfo = new SlaveInfo
                     {
-                        ID = "Slave2", // Thay đổi ID này cho mỗi thiết bị slave
-                        Name = "Slave Device 2", // Tên thiết bị
+                        ID = "Slave1", // Thay đổi ID này cho mỗi thiết bị slave
+                        Name = "Slave Device 1", // Tên thiết bị
                         Latitude = location.Latitude,
                         Longitude = location.Longitude
                     };
