@@ -8,14 +8,25 @@ using Newtonsoft.Json;
 
 class Program
 {
-    static async Task Main(string[] args)
+    private static async Task StartMultipleClients(int numberOfClients)
     {
-        // Khởi tạo hai client
-        Task client1 = StartClient("Client1");
-        Task client2 = StartClient("Client2");
+        // Danh sách các task
+        List<Task> clientTasks = new List<Task>();
 
-        // Đợi cả hai client kết thúc
-        await Task.WhenAll(client1, client2);
+        // Tạo và khởi chạy các clients dựa trên số lượng input
+        for (int i = 1; i <= numberOfClients; i++)
+        {
+            string clientName = $"Client{i}";
+            clientTasks.Add(StartClient(clientName));
+        }
+
+        // Đợi tất cả các task hoàn thành
+        await Task.WhenAll(clientTasks);
+    }
+
+    private static async Task Main(string[] args)
+    {
+        await StartMultipleClients(100);
     }
 
     static async Task StartClient(string clientName)
@@ -33,7 +44,7 @@ class Program
 
                 Random random = new Random();
                 // Gửi 100 requests liên tục với mô phỏng giao dịch mua/bán
-                for (int i = 1; i <= 100; i++)
+                for (int i = 1; i <= 90000000; i++)
                 {
                     // Random action: Mua (buy) hoặc Bán (sell)
                     string action = random.Next(2) == 0 ? "buy" : "sell";
@@ -57,7 +68,7 @@ class Program
                     await ReceiveMessage(webSocket);
 
                     // Thêm độ trễ để dễ dàng quan sát quá trình (có thể điều chỉnh)
-                    await Task.Delay(500);  // Đảm bảo độ trễ để tránh spam requests quá nhanh
+                    await Task.Delay(1000);  // Đảm bảo độ trễ để tránh spam requests quá nhanh
                 }
 
                 // Đóng kết nối
